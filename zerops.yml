@@ -1,4 +1,4 @@
 use: [nodejs@14]
 run:
   - npm i
-deploy: ['./app/index.js']
+deploy: [ 'node_modules', './app/index.js']
