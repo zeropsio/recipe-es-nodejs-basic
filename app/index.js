@@ -35,7 +35,7 @@ const insert = async (esClient) => {
 app.get('/', (req, res) => {
 	(async() => {
 		const insertResult = await insert(esClient);
-		if (insertResult.statusCode === '201') {
+		if (insertResult.statusCode === 201) {
 			res.send('... Hello! A new document was inserted into Elasticsearch!');
 			console.log('... created document id:', insertResult.body._id);
 		} else {
