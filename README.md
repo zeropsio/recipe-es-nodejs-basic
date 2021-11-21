@@ -48,3 +48,17 @@ See the [Zerops documentation](https://docs.zerops.io/documentation/export-impor
 ![Recipe](./images/Zerops-Services-Initialization.png "Initialization")
 ![Recipe](./images/Zerops-Services-Finishing.png "Finishing")
 ![Recipe](./images/Zerops-Services-Done.png "Done")
+
+3. Open the **recipeesnodejs** Node.js service to get access to its details.
+
+4. Open the **Private & public access** section in detail and turn on the switch **Enable Zerops Subdomain Access**. Wait till the moment it's processed.
+
+![Recipe](./images/Zerops-Service-NodeJS-Subdomain.png "Subdomain Access")
+
+5. Click on the activated subdomain URL to open a new web page. You can see the result of a essential operation when a new document is inserted into the Elasticsearch service from the Node.js environment using the Elasticsearch SDK.
+
+![Recipe](./images/Zerops-Service-Subdomain-Access-Result.png "Subdomain Access Result")
+
+6. In the end, **don't remember to disable** the Zerops subdomain access. Finally, you can delete both services from your project to keep it clear because you can always repeat it entirely from the beginning.
+
+7. Instead of using a Zerops subdomain, you can [map your public domain](http://localhost:8081/documentation/routing/using-your-domain.html) to access the service.
