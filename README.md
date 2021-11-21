@@ -37,6 +37,10 @@ services:
   buildFromGit: https://github.com/zeropsio/recipe-es-nodejs-basic@main
 ```
 
+Copy & paste the import snippet above into the dialog of **Import service** functionality.
+
+![Import](./images/Zerops-Imporrt-Services-Dialog.png "Import Service Dialog")
+
 See the [Zerops documentation](https://docs.zerops.io/documentation/export-import/project-service-export-import.html) to understand how to use it.
 
 ## Using the recipe
