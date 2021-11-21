@@ -33,9 +33,15 @@ const insert = async (esClient) => {
 }
 
 app.get('/', (req, res) => {
-	res.send(`... Hello! A new document was inserted into Elasticsearch!`);
 	(async() => {
 		const insertResult = await insert(esClient);
+		if (insertResult.statusCode === '201') {
+			res.send('... Hello! A new document was inserted into Elasticsearch!');
+			console.log('... created document id:', insertResult.body._id);
+		} else {
+			res.send(`... Error! Elasticsearch insert operation failed:`, insertResult.statusCode);
+			console.log('... document creation failed:', insertResult.statusCode);
+		}
 	})();
 });
 
