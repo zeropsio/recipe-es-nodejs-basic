@@ -43,4 +43,8 @@ See the [Zerops documentation](https://docs.zerops.io/documentation/export-impor
 
 1. [Import](/documentation/export-import/project-service-export-import.html#how-to-export-import-a-project) [both recipe services](#zerops-import-syntax) into your already existed Zerops project.
 
-2. 
+2. Wait till the moment when both services will be created and running.
+
+![Recipe](./images/Zerops-Services-Initialization.png "Initialization")
+![Recipe](./images/Zerops-Services-Finishing.png "Finishing")
+![Recipe](./images/Zerops-Services-Done.png "Done")
