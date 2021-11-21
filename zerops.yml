@@ -1,0 +1,5 @@
+use: [nodejs@14]
+run:
+  - npm i
+  - curl -XGET 'http://recipees:9200'
+deploy: ['./app/index.js']
