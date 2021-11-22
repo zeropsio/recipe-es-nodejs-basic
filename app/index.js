@@ -16,8 +16,10 @@ const getConnectionString = (serviceName) => {
 }
 
 const {Client} = require('@elastic/elasticsearch');
+// For example, the result of the <host> would be: ["http://recipees:9200"]
+const host = getConnectionString(esServiceName);
 const esClient = new Client({
-	node: getConnectionString(esServiceName),
+	node: host,
 	sniffOnStart: false
 });
 
