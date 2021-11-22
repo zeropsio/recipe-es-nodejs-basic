@@ -39,7 +39,7 @@ services:
 
 Copy & paste the import snippet above into the dialog of **Import service** functionality.
 
-![Import](./images/Zerops-Imporrt-Services-Dialog.png "Import Service Dialog")
+![Import](./images/Zerops-Import-Services-Dialog.png "Import Service Dialog")
 
 See the [Zerops documentation](https://docs.zerops.io/documentation/export-import/project-service-export-import.html) to understand how to use it.
 
