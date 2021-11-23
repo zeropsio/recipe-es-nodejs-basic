@@ -4,9 +4,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const {Client} = require('@elastic/elasticsearch');
+
 // Get the global environment object.
 const env = process.env;
-const esServiceName = 'recipees';
+const hostname = 'recipees';
 
 // Function returning an connectionString value.
 const getConnectionString = (serviceName) => {
@@ -15,13 +17,20 @@ const getConnectionString = (serviceName) => {
 	return value ? value : null;
 }
 
-const {Client} = require('@elastic/elasticsearch');
-// For example, the result of the <host> would be: ["http://recipees:9200"]
-const host = getConnectionString(esServiceName);
-const esClient = new Client({
-	node: host,
-	sniffOnStart: false
-});
+const getEsClient = (hostname) => {
+	// For example, the result of the <host> would be: ["http://recipees:9200"]
+	const host = getConnectionString(hostname);
+	if (host) {
+		return new Client({
+			node: host,
+			sniffOnStart: false
+		});
+	}
+	return null;
+}
+
+// Declaration of the Elasticsearch SDK API client.
+const esClient = getEsClient(hostname);
 
 const insert = async (esClient) => {
 	return await esClient.index({
@@ -36,13 +45,18 @@ const insert = async (esClient) => {
 
 app.get('/', (req, res) => {
 	(async() => {
-		const insertResult = await insert(esClient);
-		if (insertResult.statusCode === 201) {
-			res.send('... Hello! A new document was inserted into Elasticsearch!');
-			console.log('... created document id:', insertResult.body._id);
-		} else {
-			res.send(`... Error! Elasticsearch insert operation failed: ${insertResult.statusCode}`);
-			console.log('... document creation failed:', insertResult.statusCode);
+		try {
+			const insertResult = await insert(esClient);
+			if (insertResult.statusCode === 201) {
+				res.send('... Hello! A new document was inserted into Elasticsearch!');
+				console.log('... created document id:', insertResult.body._id);
+			} else {
+				res.send(`... Error! Elasticsearch insert operation failed: ${insertResult.statusCode}`);
+				console.log('... document creation failed:', insertResult.statusCode);
+			}
+		} catch (err) {
+			res.send(`... Error! Elasticsearch insert operation failed: ${err.statusCode}`);
+			console.log('... document creation failed:', err.statusCode);
 		}
 	})();
 });
