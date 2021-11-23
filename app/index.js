@@ -46,13 +46,18 @@ const insert = async (esClient) => {
 app.get('/', (req, res) => {
 	(async() => {
 		try {
-			const insertResult = await insert(esClient);
-			if (insertResult.statusCode === 201) {
-				res.send('... Hello! A new document was inserted into Elasticsearch!');
-				console.log('... created document id:', insertResult.body._id);
+			if (esClient) {
+				const insertResult = await insert(esClient);
+				if (insertResult.statusCode === 201) {
+					res.send('... Hello! A new document was inserted into Elasticsearch!');
+					console.log('... created document id:', insertResult.body._id);
+				} else {
+					res.send(`... Error! Elasticsearch insert operation failed: ${insertResult.statusCode}`);
+					console.log('... document creation failed:', insertResult.statusCode);
+				}
 			} else {
-				res.send(`... Error! Elasticsearch insert operation failed: ${insertResult.statusCode}`);
-				console.log('... document creation failed:', insertResult.statusCode);
+				res.send('... Error! Elasticsearch SDK API client not initialized.');
+				console.log('... Error! Elasticsearch SDK API client not initialized.');
 			}
 		} catch (err) {
 			res.send(`... Error! Elasticsearch insert operation failed: ${err.statusCode}`);
