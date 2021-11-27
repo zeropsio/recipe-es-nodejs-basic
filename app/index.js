@@ -10,10 +10,10 @@ const {Client} = require('@elastic/elasticsearch');
 const env = process.env;
 const hostname = 'recipees';
 
-// Function returning an connectionString value.
-const getConnectionString = (serviceName) => {
+// Function returning an connectionString environment variable of the <hostname> service.
+const getConnectionString = (hostname) => {
 	const connectionString = 'connectionString';
-	const value = env[`${serviceName}_${connectionString}`];
+	const value = env[`${hostname}_${connectionString}`];
 	return value ? value : null;
 }
 
