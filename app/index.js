@@ -17,6 +17,7 @@ const getConnectionString = (hostname) => {
 	return value ? value : null;
 }
 
+// Function returning an object of the Elasticsearch SDK client.
 const getEsClient = (hostname) => {
 	// For example, the result of the <host> would be: ["http://recipees:9200"]
 	const host = getConnectionString(hostname);
@@ -32,6 +33,7 @@ const getEsClient = (hostname) => {
 // Declaration of the Elasticsearch SDK API client.
 const esClient = getEsClient(hostname);
 
+// Function inserting a new document.
 const insert = async (esClient) => {
 	return await esClient.index({
 		index: 'zerops-recipes',
@@ -43,6 +45,7 @@ const insert = async (esClient) => {
 	})
 }
 
+// Code called when accessing the root URL of the enabled Zerops subdomain.
 app.get('/', (req, res) => {
 	(async() => {
 		if (esClient) {
