@@ -1,4 +1,10 @@
-use: [nodejs@14]
-run:
-  - npm i
-deploy: ['package.json', 'node_modules', './app/index.js']
+# use: [nodejs@14]
+# run:
+#   - npm i
+# deploy: ['package.json', 'node_modules', './app/index.js']
+recipeesnodejs:
+  base: [nodejs@14]
+  build:
+    build:
+      - npm i
+    deploy: ['package.json', 'node_modules', './app/index.js']
