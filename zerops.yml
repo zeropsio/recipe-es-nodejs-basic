@@ -1,7 +1,3 @@
-# use: [nodejs@14]
-# run:
-#   - npm i
-# deploy: ['package.json', 'node_modules', './app/index.js']
 recipeesnodejs:
   build:
     # What container type should be used as a base one for creating a build container.

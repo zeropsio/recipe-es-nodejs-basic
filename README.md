@@ -31,8 +31,6 @@ services:
     # It also means that you can enable a Zerops subdomain and access the service from the Internet.
     # You can even map public Internet domains with the option of automatic support for SSL certificates.
     httpSupport: true
-  # A command that should start your service.
-  # startCommand: npm start
   # Repository that contains Node.js code with build and deploy instructions.
   buildFromGit: https://github.com/zeropsio/recipe-es-nodejs-basic@main
 ```
