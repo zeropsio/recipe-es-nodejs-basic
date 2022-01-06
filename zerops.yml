@@ -3,8 +3,14 @@
 #   - npm i
 # deploy: ['package.json', 'node_modules', './app/index.js']
 recipeesnodejs:
+  # What container type should be used as a base one for creating a build container.
   base: [nodejs@14]
   build:
+    # What tasks should be run to build the application.
     build:
       - npm i
+    # What files and directories should be copied from a build container into a runtime container.
     deploy: ['package.json', 'node_modules', './app/index.js']
+  run:
+    # A command that should start your service.
+    start: npm start
