@@ -1,3 +1,4 @@
+# Service hostname.
 recipeesnodejs:
   build:
     # What container type should be used as a base one for creating a build container.
